@@ -1,60 +1,96 @@
-//cache DOM
+//turn text into an array of letters
 const textEl = document.querySelector('h1')
-const str = textEl.textContent
-const lettersArr = str.split('')
+const textArr = textEl.textContent.split('')
+
+
+let char = 0
 const userInput = document.querySelector('#user-input')
 
 textEl.textContent = ''
 
-for (const letter of lettersArr) {
-    textEl.innerHTML += '<span>' + letter + '</span>'
+// wrap each letter in output in a span 
+function createInduvidualLetterSpans(letterArr) {
+    for (const letter of letterArr) {
+        const letterEl = document.createElement('span')
+        letterEl.textContent = letter
+        textEl.appendChild(letterEl)
+    }
 }
 
-let char = 0
-let timer = setInterval(onTick, 10)
-
-function onTick() {
+// animate each letter
+function displayChars() {
     const span = textEl.querySelectorAll('span')[char]
     span.classList.add('load')
     char++
-    if (char == lettersArr.length) {
+
+    if (char == textArr.length) {
         complete()
         return
     }
 }
-
-
-
-userInput.addEventListener('submit', (e) => {
-    let text = e.target.elements.text.value.toLowerCase()
-    e.preventDefault()
-
-    if (text == 'ibm') {
-        changeTerminalTextColor(ibm = 'ibm')
-    }
-    if (text == 'cathode') {
-        changeTerminalTextColor(cathode = 'cathode')
-    }
-    if (text == 'apple') {
-        changeTerminalTextColor(appleii = 'apple')
-    }
-})
 
 function complete() {
     clearInterval(timer)
     timer = null
 }
 
-const changeTerminalTextColor = (color) => {
-    if (color == 'ibm') {
-        document.documentElement.setAttribute('data-theme', 'ibm')
-
-
+// iterator function to animate each letter
+function displayChars(arr) {
+    let count = 0
+    const span = textEl.querySelectorAll('span')[char]
+    const inner = {
+        next: function () {
+            const el = arr[count]
+            console.log(span)
+            // span.classList.add('load')
+            count++
+            arr[count] == undefined ? done = true : done = false
+            return {
+                value: el,
+                done
+            }
+        }
     }
-    if (color == 'cathode') {
-        document.documentElement.setAttribute('data-theme', 'cathode')
-    }
-    if (color == 'apple') {
-        document.documentElement.setAttribute('data-theme', 'apple')
-    }
+    return inner
 }
+
+const iterator = displayChars(textArr);
+
+console.log(iterator.next())
+
+
+// let result = iterator.next();
+// while (!result.done) {
+//     result = iterator.next()
+//     console.log(result)
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+createInduvidualLetterSpans(textArr)
+//let timer = setInterval(displayChars, 10)
+
+
+
+
+
+
+
+// change computer color
+userInput.addEventListener('submit', (e) => {
+    let input = e.target.elements.text.value.toLowerCase()
+    e.preventDefault()
+
+    changeTerminalTextColor(input)
+})

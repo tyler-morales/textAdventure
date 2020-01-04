@@ -1,5 +1,5 @@
 :root {
-  --color-text: #33FF00;
+  --color-text: #fa7933;
 }
 
 html[data-theme='apple'] {
@@ -18,7 +18,8 @@ html[data-theme='cathode'] {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Share Tech Mono', monospace;
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 300;
   color: var(--color-text);
 }
 
