@@ -4,11 +4,24 @@ const submit = document.getElementById('user-input');
 const userText = document.getElementById('user-text')
 
 //prompts
-const bed = 'Your lack of desire has lead you towards a life of bordeom and dread. [[GAME OVER]]'.split('');
-const explore = 'As your eyes adjust to the early monning sun, you glance around the room. To your left, you notice a small, but sturdy bed side table. In front of you, a TV is broadcasting re-runs of the show "Friends". You also consider walking and exploring more of this strange room.What is your next inclination?'.split('')
-const walkAroundRoom = 'Walking around the room seems like a good idea. After all, you tell yourself, "I should at least aquainte and introduce myself to this bewildering experience. After a bit of pondering and wandering, you look straight ahead and notice a bathroom. To your right, a window.'.split('')
-const watchTV = 'You make yourself comfortable. You kick off your shoes, pile the covers and pillows over your body bask in the glory of laziness for eternity.[[GAME OVER]]'.split('')
-const defaultValue = `I am not sure what you mean? Try again`.split('')
+const prompts = {
+  wake: {
+    text: 'You wake, enter "walk" or "explore"',
+    responses: { walk: 'wake_walk', explore: 'wake_explore' }
+  },
+  wake_explore: {
+    text: 'You explore after waking. Enter "walk" to walk',
+    responses: { walk: 'wake_walk' }
+  },
+  wake_walk: {
+    text: 'You walk. Enter "walk" to continue walking, or "sleep" to go back to sleep',
+    responses: { walk: 'wake_walk', sleep: 'sleep' }
+  },
+  sleep: {
+    text: 'You sleep.',
+    responses: {}
+  }
+};
 
 go(startGame)
 
