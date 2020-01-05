@@ -10,7 +10,6 @@ const walkAroundRoom = 'Walking around the room seems like a good idea. After al
 const watchTV = 'You make yourself comfortable. You kick off your shoes, pile the covers and pillows over your body bask in the glory of laziness for eternity.[[GAME OVER]]'.split('')
 const defaultValue = `I am not sure what you mean? Try again`.split('')
 
-
 go(startGame)
 
 submit.addEventListener('submit', () => {
@@ -19,10 +18,10 @@ submit.addEventListener('submit', () => {
   } else if (response('ex')) {
     go(explore)
 
-    submit.addEventListener('submit',()=>{
-      if(response('tv')){
+    submit.addEventListener('submit', () => {
+      if (response('tv')) {
         go(watchTV)
-      } else if(response('walk')){
+      } else if (response('walk')) {
         go(walkAroundRoom)
       }
     })
