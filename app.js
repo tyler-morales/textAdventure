@@ -1,22 +1,38 @@
-//turn text into an array of letters
-const textEl = document.querySelector('h1')
-const textArr = textEl.textContent.split('')
+const textEl = document.querySelector('h1');
+const startGame = textEl.textContent.split('');
+const submit = document.getElementById('user-input');
+const userText = document.getElementById('user-text')
 
-let char = 0
-const userInput = document.querySelector('#user-input')
+//prompts
+const bed = 'Your lack of desire has lead you towards a life of bordeom and dread. [[GAME OVER]]'.split('');
+const explore = 'As your eyes adjust to the early monning sun, you glance around the room. To your left, you notice a small, but sturdy bed side table. In front of you, a TV is broadcasting re-runs of the show "Friends". You also consider walking and exploring more of this strange room.What is your next inclination?'.split('')
+const walkAroundRoom = 'Walking around the room seems like a good idea. After all, you tell yourself, "I should at least aquainte and introduce myself to this bewildering experience. After a bit of pondering and wandering, you look straight ahead and notice a bathroom. To your right, a window.'.split('')
+const watchTV = 'You make yourself comfortable. You kick off your shoes, pile the covers and pillows over your body bask in the glory of laziness for eternity.[[GAME OVER]]'.split('')
+const defaultValue = `I am not sure what you mean? Try again`.split('')
 
-textEl.textContent = ''
 
-// display story game
-createInduvidualLetterSpans(textArr)
-let timer = setInterval(displayChars, 10)
+go(startGame)
 
-// change computer color
-userInput.addEventListener('submit', (e) => {
-    let input = e.target.elements.text.value.toLowerCase()
-    e.preventDefault()
+submit.addEventListener('submit', () => {
+  if (response('bed')) {
+    go(bed)
+  } else if (response('ex')) {
+    go(explore)
 
-    changeTerminalTextColor(input)
+    submit.addEventListener('submit',()=>{
+      if(response('tv')){
+        go(watchTV)
+      } else if(response('walk')){
+        go(walkAroundRoom)
+      }
+    })
+  } else {
+    go(defaultValue)
+  }
 })
 
 
+// clear user input each time
+submit.addEventListener('submit', () => {
+  userText.value = ''
+})
