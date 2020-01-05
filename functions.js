@@ -30,7 +30,7 @@ function makeAnimator(arr) {
 }
 
 // run terminal animation
-function go(action) {
+function display(action) {
     const animator = makeAnimator(action);
     animator.createSpan(action)
     animator.animateEachLetter(10);
