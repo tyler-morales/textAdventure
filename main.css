@@ -1,10 +1,10 @@
 :root {
-  --color-text: #fa7933;
+  --color-text: #36f906;
   --font-size-med: 2.5rem;
 }
 
 html[data-theme='apple'] {
-  --color-text: rgb(54, 249, 6);
+  --color-text: #36f906;
 }
 
 html[data-theme='ibm'] {
