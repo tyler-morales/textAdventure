@@ -3,7 +3,7 @@
 This is a simple text based adventure built with html, css and js
 
 [Live Site](https://peaceful-knuth-debc9a.netlify.com/)
-![ScreenShot](path "screenshot")
+![](text-adventure.png)
 
 ## Setup🚀
 ### Start live server and build css (cl)
